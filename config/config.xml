@@ -2,8 +2,8 @@
 <config>
     <Source>
         <RTSPAPI>
-            <ID></ID>
-            <RTSPURL></RTSPURL>
+            <ID>01</ID>
+            <RTSPURL>"/usr/local/lib/python3.7/site-packages/openpifpaf/input/test.mp4"</RTSPURL>
             <Scale>0.7</Scale>
         </RTSPAPI>
     </Source>
