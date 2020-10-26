@@ -2,7 +2,7 @@ import PIL
 import torch
 
 
-from .. import transforms
+import transforms
 
 
 class ImageList(torch.utils.data.Dataset):

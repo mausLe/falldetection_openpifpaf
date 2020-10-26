@@ -3,7 +3,7 @@ import logging
 
 from .base import BaseVisualizer
 from ..annotation import AnnotationDet
-from .. import show
+import show
 
 try:
     import matplotlib.cm

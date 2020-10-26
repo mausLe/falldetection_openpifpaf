@@ -2,7 +2,7 @@ from contextlib import contextmanager
 import logging
 import numpy as np
 
-from .. import show
+import show
 
 try:
     import matplotlib.pyplot as plt

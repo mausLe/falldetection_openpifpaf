@@ -3,7 +3,7 @@ import torch
 from .coco import Coco
 from .collate import collate_images_targets_meta
 from .constants import COCO_KEYPOINTS, HFLIP
-from .. import transforms
+import transforms
 
 COCOKP_ANNOTATIONS_TRAIN = 'data-mscoco/annotations/person_keypoints_train2017.json'
 COCOKP_ANNOTATIONS_VAL = 'data-mscoco/annotations/person_keypoints_val2017.json'

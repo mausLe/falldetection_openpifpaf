@@ -1,7 +1,7 @@
 import logging
 
 from .base import BaseVisualizer
-from .. import show
+import show
 
 LOG = logging.getLogger(__name__)
 

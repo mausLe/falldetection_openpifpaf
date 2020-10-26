@@ -5,7 +5,7 @@ import torch
 import torchvision
 
 from . import basenetworks, heads, nets
-from .. import datasets
+import datasets
 
 # generate hash values with: shasum -a 256 filename.pkl
 

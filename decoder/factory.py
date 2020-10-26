@@ -9,7 +9,7 @@ from .generator.cifdet import CifDet
 from . import nms
 from .profiler import Profiler
 from .profiler_autograd import ProfilerAutograd
-from .. import network, visualizer
+import network, visualizer
 
 LOG = logging.getLogger(__name__)
 

@@ -2,7 +2,7 @@ import logging
 import torch
 
 from . import heads
-from .. import datasets
+import datasets
 
 LOG = logging.getLogger(__name__)
 

@@ -4,7 +4,7 @@ import math
 import numpy as np
 
 from ..annotation import AnnotationDet
-from . import utils
+import utils
 
 
 class Preprocess(metaclass=ABCMeta):

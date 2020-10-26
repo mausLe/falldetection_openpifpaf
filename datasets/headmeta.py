@@ -1,4 +1,4 @@
-from ..network.heads import AssociationMeta, DetectionMeta, IntensityMeta
+from network.heads import AssociationMeta, DetectionMeta, IntensityMeta
 from .constants import (
     COCO_CATEGORIES,
     COCO_KEYPOINTS,

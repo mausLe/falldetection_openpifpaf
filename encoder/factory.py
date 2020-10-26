@@ -4,7 +4,7 @@ from .annrescaler import AnnRescaler, AnnRescalerDet
 from .caf import Caf
 from .cif import Cif
 from .cifdet import CifDet
-from .. import network, visualizer
+import network, visualizer
 
 LOG = logging.getLogger(__name__)
 

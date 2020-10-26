@@ -5,7 +5,7 @@ import time
 from ..functional import scalar_values
 from .field_config import FieldConfig
 from .cif_hr import CifHr
-from .. import visualizer
+import visualizer
 
 LOG = logging.getLogger(__name__)
 

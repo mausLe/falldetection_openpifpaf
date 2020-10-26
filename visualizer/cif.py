@@ -2,8 +2,8 @@ import copy
 import logging
 
 from .base import BaseVisualizer
-from ..annotation import Annotation
-from .. import show
+from annotation import Annotation
+import show
 
 try:
     import matplotlib.cm
