@@ -3,6 +3,10 @@ import time
 
 import numpy as np
 
+# To execute .npy file
+import pyximport
+pyximport.install()
+
 # pylint: disable=import-error
 from ..functional import scalar_values
 from .field_config import FieldConfig

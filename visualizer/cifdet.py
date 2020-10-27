@@ -2,7 +2,7 @@ import copy
 import logging
 
 from .base import BaseVisualizer
-from ..annotation import AnnotationDet
+from annotation import AnnotationDet
 import show
 
 try:

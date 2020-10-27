@@ -32,8 +32,8 @@ import torch
 import torch.multiprocessing as mp
 
 import cv2  # pylint: disable=import-error
-from . import decoder, network, show, transforms, visualizer, __version__
-from . import config, core, logger
+import decoder, network, show, transforms, visualizer, __version__
+import config, core, logger
 
 os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
 LOG = logging.getLogger(__name__)

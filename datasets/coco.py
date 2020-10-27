@@ -7,7 +7,7 @@ import numpy as np
 import torch.utils.data
 from PIL import Image
 
-from .. import transforms, utils
+import transforms, utils
 
 
 LOG = logging.getLogger(__name__)

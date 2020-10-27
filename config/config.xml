@@ -9,7 +9,7 @@
     </Source>
     <Output>
         <FileOutput>
-            <FileName>{yyyymmdd}_{HHMMSS}_{streamID}_{algoName}_{fallcount}.jpg</FileName>
+            <FileName>"/content/falldetection_openpifpaf/input/test.mp4"</FileName>
         </FileOutput>
     </Output>
 </config>

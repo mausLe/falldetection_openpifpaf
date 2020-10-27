@@ -6,17 +6,17 @@ import time
 import numpy as np
 
 from .generator import Generator
-from ...annotation import Annotation
+from annotation import Annotation
 from ..field_config import FieldConfig
 from ..cif_hr import CifHr
 from ..cif_seeds import CifSeeds
 from ..caf_scored import CafScored
 from .. import nms as nms_module
 from ..occupancy import Occupancy
-from ... import visualizer
+from import visualizer
 
 # pylint: disable=import-error
-from ...functional import caf_center_s, grow_connection_blend
+from functional import caf_center_s, grow_connection_blend
 
 LOG = logging.getLogger(__name__)
 

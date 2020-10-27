@@ -2,7 +2,7 @@ import logging
 import numpy as np
 
 from .utils import scalar_square_add_single
-from ..functional import scalar_nonzero_clipped_with_reduction
+from functional import scalar_nonzero_clipped_with_reduction
 
 LOG = logging.getLogger(__name__)
 

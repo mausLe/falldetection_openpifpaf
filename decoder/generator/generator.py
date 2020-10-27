@@ -6,7 +6,7 @@ import time
 
 import torch
 
-from ... import visualizer
+import visualizer
 
 LOG = logging.getLogger(__name__)
 

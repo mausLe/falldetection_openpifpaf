@@ -3,13 +3,13 @@ import logging
 import time
 
 from .generator import Generator
-from ...annotation import AnnotationDet
+from annotation import AnnotationDet
 from ..field_config import FieldConfig
 from ..cif_hr import CifDetHr
 from ..cif_seeds import CifDetSeeds
 from .. import nms
 from ..occupancy import Occupancy
-from ... import visualizer
+import visualizer
 
 LOG = logging.getLogger(__name__)
 

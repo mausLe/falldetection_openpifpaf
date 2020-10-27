@@ -30,7 +30,8 @@ class MultiStreamLoader:
             if "Scale" in RTSPdict:
                 scale = RTSPdict["Scale"]
             
-            LOG.info("Initialising stream: " + str_RTSPURL)    
+            if str_RTSPURL is not None:
+                LOG.info("Initialising stream: " + str_RTSPURL)   
             self.streams.append((str_RTSPURL, ID, scale))
     
         return self.streams
