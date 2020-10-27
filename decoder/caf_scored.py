@@ -8,7 +8,7 @@ import pyximport
 pyximport.install()
 
 # pylint: disable=import-error
-from ..functional import scalar_values
+from functional import scalar_values
 from .field_config import FieldConfig
 
 LOG = logging.getLogger(__name__)
