@@ -213,4 +213,4 @@ def factory_decode(head_nets, *,
             worker_pool=worker_pool,
         )
 
-    raise Exception('decoder unknown for head names: {}'.format(head_names))
+    # raise Exception('decoder unknown for head names: {}'.format(head_names))

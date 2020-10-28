@@ -101,7 +101,7 @@ def cli():  # pylint: disable=too-many-statements,too-many-branches
     show.AnimationFrame.video_fps = args.video_fps
 
     # check whether source should be an int
-    if args.source is not None:
+    if args.source == 1:
         args.source = int(args.source)
 
     # add args.device
