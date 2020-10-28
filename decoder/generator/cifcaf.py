@@ -13,7 +13,7 @@ from ..cif_seeds import CifSeeds
 from ..caf_scored import CafScored
 from .. import nms as nms_module
 from ..occupancy import Occupancy
-from import visualizer
+import visualizer
 
 # pylint: disable=import-error
 from functional import caf_center_s, grow_connection_blend

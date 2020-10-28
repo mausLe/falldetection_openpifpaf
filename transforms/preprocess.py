@@ -3,7 +3,7 @@ import copy
 import math
 import numpy as np
 
-from ..annotation import AnnotationDet
+from annotation import AnnotationDet
 import utils
 
 

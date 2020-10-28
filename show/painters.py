@@ -12,7 +12,7 @@ try:
 except ImportError:
     matplotlib = None
 
-from .. import core
+import core
 
 LOG = logging.getLogger(__name__)
 

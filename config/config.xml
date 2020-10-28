@@ -3,13 +3,13 @@
     <Source>
         <RTSPAPI>
             <ID>01</ID>
-            <RTSPURL>"/usr/local/lib/python3.7/site-packages/openpifpaf/input/test.mp4"</RTSPURL>
+            <RTSPURL>"/content/openpifpaf/openpifpaf/input/test.mp4"</RTSPURL>
             <Scale>0.7</Scale>
         </RTSPAPI>
     </Source>
     <Output>
         <FileOutput>
-            <FileName>"/content/falldetection_openpifpaf/input/test.mp4"</FileName>
+            <FileName>"/content/openpifpaf/openpifpaf/input/test.mp4"</FileName>
         </FileOutput>
     </Output>
 </config>
