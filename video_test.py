@@ -127,8 +127,13 @@ def cli():  # pylint: disable=too-many-statements,too-many-branches
 
 def processor_factory(args):
     model, _ = network.factory_from_args(args)
+    # print("model 1: ", model)
+
     model = model.to(args.device)
+    # print("\n\nmodel 2: ", model)
+    
     processor = decoder.factory_from_args(args, model)
+    print("processor: ", processor)
     return processor, model
 
 def reconnect(capture, RTSPURL):
@@ -149,6 +154,7 @@ def inference(args, stream):
 
     keypoint_painter = show.KeypointPainter(color_connections=args.colored_connections, linewidth=6)
     annotation_painter = show.AnnotationPainter(keypoint_painter=keypoint_painter)
+    print("\ninference checkpoint ARGS: ", args)
 
     print("\ninference checkpoint PROCESSOR: ", processor)
     # print("\ninference checkpoint MODEL: ", model)
@@ -233,6 +239,10 @@ def inference(args, stream):
 
         start = time.time()
         image_pil = PIL.Image.fromarray(image)
+        
+        # image_pil.save("output/test/test.jpeg", "JPEG")
+        # cv2.imwrite("output/test/test.jpg", image)
+        print("image_pil: ", image_pil)
         processed_image, _, __ = transforms.EVAL_TRANSFORM(image_pil, [], None)
         LOG.debug('preprocessing time %.3fs', time.time() - start)
 
