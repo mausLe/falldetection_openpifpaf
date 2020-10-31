@@ -64,7 +64,7 @@ class CifCaf(Generator):
             self.by_source[j2][j1] = (caf_i, False)
 
     def __call__(self, fields, initial_annotations=None):
-        print("\n\nfields: ", len(fields[0][0]))
+        print("\n\nCAF fields: ", fields[0])
         start = time.perf_counter()
         if not initial_annotations:
             initial_annotations = []
@@ -72,9 +72,7 @@ class CifCaf(Generator):
 
         if self.field_config.cif_visualizers:
             for vis, cif_i in zip(self.field_config.cif_visualizers, self.field_config.cif_indices):
-                # print("\n\nFIELDS[cif_i]: ", fields[cif_i])
-                fields[cif_i] = np.array(fields[cif_i])
-                # print("\n\nfields[CIF_I]: ", fields[cif_i].shape)                
+               
                 print("\nCIF_I: ", cif_i)
 
                 print("\nVIS: ", vis)
@@ -82,7 +80,7 @@ class CifCaf(Generator):
                 vis.predicted(fields[cif_i])
         if self.field_config.caf_visualizers:
             for vis, caf_i in zip(self.field_config.caf_visualizers, self.field_config.caf_indices):
-                # print("\n\nFIELDS[cif_i]: ", fields[caf_i])
+
                 print("vis: ", vis)
                 print("caf_i: ", caf_i)
 
