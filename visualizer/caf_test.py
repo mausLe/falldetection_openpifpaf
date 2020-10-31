@@ -43,7 +43,7 @@ class Caf(BaseVisualizer):
         self._regressions(field[1], field[2], field[3], field[4], annotations=annotations)
 
     def predicted(self, field, *, annotations=None):
-        # print("\n\nFIELD: ", field)
+        # print("\n\nCAF.PY FIELD: ", field)
         self._confidences(field[:, 0])
         print("\n\nConfidence: ", self._confidences(field[:, 0]))
 

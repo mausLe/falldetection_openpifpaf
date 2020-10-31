@@ -27,7 +27,9 @@ class Generator:
                 'not supported, use --decoder-workers=0 '
                 'on windows'
             )
-            worker_pool = multiprocessing.Pool(worker_pool)
+            multiprocessing_context = multiprocessing.get_context('fork')
+            worker_pool = multiprocessing_context.Pool(worker_pool)
+
 
         self.worker_pool = worker_pool
 
@@ -45,23 +47,35 @@ class Generator:
         """From image batch to field batch."""
         start = time.time()
 
+        print("\n\nget in fields_batch")
+        j = k = l = m = 0
+
         def apply(f, items):
             """Apply f in a nested fashion to all items that are not list or tuple."""
+            
+            print("_"*5 + "APPLY()" + "_"*5)
             if items is None:
                 return None
             if isinstance(items, (list, tuple)):
                 return [apply(f, i) for i in items]
+            print("return apply")
+
             return f(items)
 
         with torch.no_grad():
             if device is not None:
                 image_batch = image_batch.to(device, non_blocking=True)
+                j += 1
 
             with torch.autograd.profiler.record_function('model'):
                 heads = model(image_batch)
+                k += 1
 
             # to numpy
             with torch.autograd.profiler.record_function('tonumpy'):
+                print("\n\nConvert to Numpy")
+                print("\n\n HEADS: ", len(heads))
+                l += 1
                 heads = apply(lambda x: x.cpu().numpy(), heads)
 
         # index by frame (item in batch)
@@ -70,10 +84,15 @@ class Generator:
         while True:
             try:
                 heads.append(apply(next, head_iter))
+                m += 1
             except StopIteration:
                 break
 
         LOG.debug('nn processing time: %.3fs', time.time() - start)
+
+        print("j:  {} k: {}  l: {}  m: {} ".format(j, k, l, m))
+        print("\n\nBATCH: ", len(heads))
+
         return heads
 
     @abstractmethod
@@ -94,6 +113,7 @@ class Generator:
 
         LOG.debug('parallel execution with worker %s', self.worker_pool)
         start_decoder = time.perf_counter()
+        print("\n\nFIELD BATCH SHAPE: ", len(fields_batch))
         result = self.worker_pool.starmap(
             self._mappable_annotations(fields_batch, image_batch), zip(fields_batch, image_batch))
         self.last_decoder_time = time.perf_counter() - start_decoder
