@@ -246,7 +246,10 @@ def inference(args, stream):
         processed_image, _, __ = transforms.EVAL_TRANSFORM(image_pil, [], None)
         LOG.debug('preprocessing time %.3fs', time.time() - start)
 
+        print("\nPass process. Enter processor batch")
         preds = processor.batch(model, torch.unsqueeze(processed_image, 0), device=args.device)[0]
+        
+        print("\nPass processor batch. Imshow image")
         ax.imshow(image)
         
         fallcount = annotation_painter.annotations(ax, preds, ID, input_fps)
