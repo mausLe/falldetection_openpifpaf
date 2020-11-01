@@ -109,6 +109,7 @@ def factory_from_args(args, model):
                             multi_scale=args.multi_scale,
                             multi_scale_hflip=args.multi_scale_hflip,
                             worker_pool=args.decoder_workers)
+    print("decode: ", decode)
 
     if args.profile_decoder is not None:
         decode.__class__.__call__ = Profiler(
@@ -131,6 +132,7 @@ def factory_decode(head_nets, *,
     assert not caf_seeds, 'not implemented'
 
     head_names = tuple(hn.meta.name for hn in head_nets)
+    print("\nhead_nets: ", type(head_nets[0].meta))
     LOG.debug('head names = %s', head_names)
 
     if isinstance(head_nets[0].meta, network.heads.DetectionMeta):
@@ -141,14 +143,27 @@ def factory_decode(head_nets, *,
                               stride=head_nets[0].stride(basenet_stride),
                               categories=head_nets[0].meta.categories)
         ]
+        
+        print("branch 1")
         return CifDet(
             field_config,
             head_nets[0].meta.categories,
             worker_pool=worker_pool,
         )
 
-    if isinstance(head_nets[0].meta, network.heads.IntensityMeta) \
-       and isinstance(head_nets[1].meta, network.heads.AssociationMeta):
+    print("head_nest meta: ", str(type(head_nets[0].meta)))
+    print("Intensity meta: ", network.heads.IntensityMeta)
+
+    print("head_nest meta: ", type(head_nets[1].meta))
+    print("Intensity meta: ", network.heads.AssociationMeta)
+    print("Condition 1: ", isinstance(head_nets[0].meta, network.heads.IntensityMeta))
+    print("Condition 2: ", isinstance(head_nets[1].meta, network.heads.AssociationMeta))
+
+    # if isinstance(head_nets[0].meta, network.heads.IntensityMeta) \
+    #    and isinstance(head_nets[1].meta, network.heads.AssociationMeta):
+    if True:
+        print("branch 2")
+        
         field_config = FieldConfig()
         field_config.cif_strides = [head_nets[0].stride(basenet_stride)]
         field_config.caf_strides = [head_nets[1].stride(basenet_stride)]
@@ -205,12 +220,14 @@ def factory_decode(head_nets, *,
             for i in field_config.caf_indices
         ]
         
-        return CifCaf(
+        x = CifCaf(
             field_config,
             keypoints=head_nets[0].meta.keypoints,
             skeleton=skeleton,
             out_skeleton=head_nets[1].meta.skeleton,
             worker_pool=worker_pool,
         )
+        print("CIFCAF: ", x)        
+        return x
 
     # raise Exception('decoder unknown for head names: {}'.format(head_names))
